@@ -5,8 +5,10 @@ import src.MyInternalFrame;
 import javax.swing.*;
 
 import java.awt.event.*;
+import java.io.File;
 import java.awt.*;
 
+import javax.swing.filechooser.*;
 /*
  * InternalFrameDemo.java requires:
  *   MyInternalFrame.java
@@ -115,7 +117,7 @@ public class InternalFrameDemo extends JFrame
 
         menu.add(help);
         menu.add(about);
-
+        printDrives();
         return menuBar;
     }
 
@@ -128,6 +130,14 @@ public class InternalFrameDemo extends JFrame
         }
     }
 
+    protected void printDrives(){
+
+        File[] rootDrive = File.listRoots();
+
+        for (File sysDrive : rootDrive){
+            System.out.println("Drive : " + sysDrive);
+        }
+    }
     //Create a new internal frame.
     protected void createFrame() {
         MyInternalFrame frame = new MyInternalFrame();
