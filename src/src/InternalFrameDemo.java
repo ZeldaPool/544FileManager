@@ -2,13 +2,7 @@ package src;
 
 import src.MyInternalFrame;
 
-import javax.swing.JInternalFrame;
-import javax.swing.JDesktopPane;
-import javax.swing.JMenu;
-import javax.swing.JMenuItem;
-import javax.swing.JMenuBar;
-import javax.swing.JFrame;
-import javax.swing.KeyStroke;
+import javax.swing.*;
 
 import java.awt.event.*;
 import java.awt.*;
@@ -102,10 +96,14 @@ public class InternalFrameDemo extends JFrame
         menu = new JMenu("New");
         menuBar.add(menu);
 
-        JMenuItem newWindow = new JMenuItem("New");
-        JMenuItem cascadeWindow = new JMenuItem("Cascade");
 
+        JMenuItem newWindow = new JMenuItem("New");
+        newWindow.setMnemonic(KeyEvent.VK_N);
+        newWindow.setActionCommand("new");
+        newWindow.addActionListener(this);
         menu.add(newWindow);
+
+        JMenuItem cascadeWindow = new JMenuItem("Cascade");
         menu.add(cascadeWindow);
 
         //help
@@ -133,6 +131,16 @@ public class InternalFrameDemo extends JFrame
     //Create a new internal frame.
     protected void createFrame() {
         MyInternalFrame frame = new MyInternalFrame();
+        JLabel leftLabel = new JLabel();
+        JLabel rightLabel = new JLabel();
+
+        JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,
+                new JScrollPane(leftLabel), new JScrollPane(rightLabel));
+
+        splitPane.setOneTouchExpandable(true);
+        splitPane.setDividerLocation(250);
+
+        frame.add(splitPane);
         frame.setVisible(true); //necessary as of 1.3
         desktop.add(frame);
         try {

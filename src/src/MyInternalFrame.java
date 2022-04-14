@@ -20,7 +20,7 @@ public class MyInternalFrame extends JInternalFrame {
         //...Create the GUI and put it in the window...
 
         //...Then set the window size or call pack...
-        setSize(300,300);
+        setSize(1024,624);
 
         //Set the window's location.
         setLocation(xOffset*openFrameCount, yOffset*openFrameCount);
