@@ -2,8 +2,6 @@ package src;
 
 import javax.swing.JInternalFrame;
 
-import java.awt.event.*;
-import java.awt.*;
 
 /* Used by InternalFrameDemo.java. */
 public class MyInternalFrame extends JInternalFrame {
@@ -24,5 +22,7 @@ public class MyInternalFrame extends JInternalFrame {
 
         //Set the window's location.
         setLocation(xOffset*openFrameCount, yOffset*openFrameCount);
+        
+        
     }
 }
